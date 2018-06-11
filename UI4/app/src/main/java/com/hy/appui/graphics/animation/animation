@@ -1,0 +1,46 @@
+
+Android中的动画有三种，分别是补间动画、帧动画、属性动画。
+(1)Frame Animation(帧动画)主要用于播放一帧帧准备好的图片，类似GIF图片，优点是使用简单方便、缺点是需要事先准备好每一帧图片；
+(2)Tween Animation(补间动画)仅需定义开始与结束的关键帧，而变化的中间帧由系统补上，优点是不用准备每一帧，缺点是只改变了对象绘制，而没有改变View本身属性。因此如果改变了按钮的位置，还是需要点击原来按钮所在位置才有效。
+(3)Property Animation(属性动画)是3.0后推出的动画，优点是使用简单、降低实现的复杂度、直接更改对象的属性、几乎可适用于任何对象而仅非View类，缺点是需要3.0以上的API支持，限制较大
+
+1、Frame Animation(帧动画)
+Android 逐帧动画：关于 逐帧动画 的使用都在这里了！
+https://www.jianshu.com/p/225fe1feba60
+优点：使用简单、方便
+缺点：容易引起 OOM，因为会使用大量 & 尺寸较大的图片资源
+
+
+
+2、Tween Animation(补间动画)
+View动画是一种渐进式动画，定义动画开始和结束的两帧，并指定动画变化的时间和方式。并通过平移、缩放、旋转和透明度四种效果结合成复杂的动画效果。
+而在开始和结束帧之间插入的渐变值依据的是插值器。
+
+Android 动画：手把手教你使用 补间动画
+https://www.jianshu.com/p/733532041f46
+7. 应用场景
+7.1 标准的动画效果
+补间动画常用于视图View的一些标准动画效果：平移、旋转、缩放 & 透明度；
+除了常规的动画使用，补间动画还有一些特殊的应用场景。
+7.2 特殊的应用场景
+Activity 的切换效果
+Fragement 的切换效果
+视图组（ViewGroup）中子元素的出场效果
+
+
+
+
+3、Property Animation(属性动画)
+https://www.jianshu.com/p/2412d00a0ce4
+
+5.1 ValueAnimator类
+定义：属性动画机制中 最核心的一个类
+实现动画的原理：通过不断控制 值 的变化，再不断 手动 赋给对象的属性，从而实现动画效果。
+从上面原理可以看出：ValueAnimator类中有3个重要方法：
+ValueAnimator.ofInt（int values）
+ValueAnimator.ofFloat（float values）
+ValueAnimator.ofObject（int values）
+
+5.1.1 ValueAnimator.ofInt（int values）
+作用：将初始值 以整型数值的形式 过渡到结束值
+即估值器是整型估值器 - IntEvaluator

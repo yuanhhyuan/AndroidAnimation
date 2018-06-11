@@ -1,0 +1,40 @@
+1.静态图形
+TestCanvasView
+
+
+2.View级的动画
+让整个View做动画（比如整个View平移、旋转等）很简单方便，一般调用几行代码就行。
+MatrixView
+SharderView
+DrawBitmapMashView
+
+
+3.绘图级的动画
+在View的draw/onDraw里通过Canvas来绘制时做动画更灵活，更精细，能力更强大。我把它称作绘图级的动画。
+
+
+3.1 无用户交互
+TestCanvasView1
+
+
+
+
+
+3.2 有用户交互
+
+应用：
+
+绘制游戏动画：
+
+Android开发（八）| 绘图制作第一个游戏实例：http://www.jianshu.com/p/4493f8266d49
+
+之前已经提到，在android应用中绘制几何图形，关键在于自定义一个View组件，并重写View组件的onDraw(Canvas)方法。
+
+游戏动画无非是在此基础上让View组件上绘制的图形发生改变（位置、大小、角度等等），这就需要程序采用变量“记住”这些状态数据。
+
+1）如果需要游戏动画随用户操作而改变，就为用户的动作编写事件监听器（如按键触发事件），在监听器中修改这些数据。
+
+2）如果需要游戏动画随时间的流逝“自动”改变，那就需要使用定时器（Timer），让Timer控制这些状态数据定期改变。
+
+无论使用哪种方式，每次View组件上的图形状态数据发生改变时，都应该通知View调用onDraw(Canvas canvas)方法重绘该组件。通知View重绘可调用invalidate（在UI线程中）或postInvalidate（在非UI线程中）。
+
